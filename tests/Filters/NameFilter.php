@@ -1,15 +1,15 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Tests\Filters;
+namespace Atldays\LaravelEloquentFilters\Tests\Filters;
 
+use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
 
 class NameFilter extends AbstractEloquentFilter
 {
-    protected $name;
+    protected string $name;
 
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = $name;
     }

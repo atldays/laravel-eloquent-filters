@@ -1,15 +1,15 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Tests\Filters;
+namespace Atldays\LaravelEloquentFilters\Tests\Filters;
 
+use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
 
 class LikeFilter extends AbstractEloquentFilter
 {
-    protected $value;
+    protected string $value;
 
-    public function __construct($value)
+    public function __construct(string $value)
     {
         $this->value = $value;
     }

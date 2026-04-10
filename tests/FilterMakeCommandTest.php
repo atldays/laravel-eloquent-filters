@@ -1,23 +1,24 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Tests;
+namespace Atldays\LaravelEloquentFilters\Tests;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
+use PHPUnit\Framework\Attributes\Test;
 
 class FilterMakeCommandTest extends TestCase
 {
-    public function setUp(): void
+    protected string $filterName;
+
+    protected function setUp(): void
     {
         parent::setUp();
         $this->filterName = 'DummyFilter';
         File::delete($this->filtersPath("$this->filterName.php"));
     }
 
-    /**
-     * @test
-     */
-    public function it_creates_a_filter_class()
+    #[Test]
+    public function it_creates_a_filter_class(): void
     {
         Artisan::call('make:eloquent-filter', [
             'name' => $this->filterName,
@@ -29,10 +30,8 @@ class FilterMakeCommandTest extends TestCase
         $this->assertFileEquals($expectedFile, $resultFile);
     }
 
-    /**
-     * @test
-     */
-    public function it_inline_creates_a_filter_class()
+    #[Test]
+    public function it_inline_creates_a_filter_class(): void
     {
         Artisan::call("make:eloquent-filter {$this->filterName}");
 
@@ -42,10 +41,8 @@ class FilterMakeCommandTest extends TestCase
         $this->assertFileEquals($expectedFile, $resultFile);
     }
 
-    /**
-     * @test
-     */
-    public function it_creates_a_filter_class_with_field_name()
+    #[Test]
+    public function it_creates_a_filter_class_with_field_name(): void
     {
         Artisan::call('make:eloquent-filter', [
             'name' => $this->filterName,
@@ -57,10 +54,8 @@ class FilterMakeCommandTest extends TestCase
         $this->assertFileEquals($expectedFile, $resultFile);
     }
 
-    /**
-     * @test
-     */
-    public function it_inline_creates_a_filter_class_with_field_name()
+    #[Test]
+    public function it_inline_creates_a_filter_class_with_field_name(): void
     {
         Artisan::call("make:eloquent-filter {$this->filterName} --field=name");
         $expectedFile = $this->expectedFilesPath('FilterMakerCommand/it_creates_a_filter_class_with_field_name.php');

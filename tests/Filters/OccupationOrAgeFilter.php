@@ -1,23 +1,24 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Tests\Filters;
+namespace Atldays\LaravelEloquentFilters\Tests\Filters;
 
-use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
-use Pricecurrent\LaravelEloquentFilters\Contracts\ComposeableFilter;
-use Pricecurrent\LaravelEloquentFilters\Contracts\EloquentFilterContract;
+use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
+use Atldays\LaravelEloquentFilters\Contracts\ComposeableFilter;
+use Atldays\LaravelEloquentFilters\Contracts\EloquentFilterContract;
 
-class OccupationOrAgeFilter extends AbstractEloquentFilter implements EloquentFilterContract, ComposeableFilter
+class OccupationOrAgeFilter extends AbstractEloquentFilter implements ComposeableFilter, EloquentFilterContract
 {
-    protected $age;
-    protected $occupation;
+    protected ?int $age;
 
-    public function __construct($occupation, $age)
+    protected ?string $occupation;
+
+    public function __construct(?string $occupation, ?int $age)
     {
         $this->occupation = $occupation;
         $this->age = $age;
     }
 
-    public function composedByUsingOr()
+    public function composedByUsingOr(): array
     {
         return [
             new OccupationFilter($this->occupation),
