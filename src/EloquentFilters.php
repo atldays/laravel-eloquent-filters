@@ -1,42 +1,39 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters;
+namespace Atldays\LaravelEloquentFilters;
 
+use Atldays\LaravelEloquentFilters\Contracts\EloquentFilterContract;
+use Atldays\LaravelEloquentFilters\Exceptions\EloquentFiltersException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use Pricecurrent\LaravelEloquentFilters\Contracts\EloquentFilterContract;
-use Pricecurrent\LaravelEloquentFilters\Exceptions\EloquentFiltersException;
 use Throwable;
 
 class EloquentFilters extends Collection
 {
     /**
-     * @param  array $items
+     * @param  iterable<int, EloquentFilterContract>  $items
+     *
      * @throws Throwable
      */
-    public function __construct($items = [])
+    public function __construct(iterable $items = [])
     {
         static::validateParameters($items);
 
-        return parent::__construct($items);
+        parent::__construct($items);
     }
 
     /**
-     * @param  mixed $items
-     * @return static
+     * @param  iterable<int, EloquentFilterContract>  $items
+     *
      * @throws Throwable
      */
-    public static function make($items = [])
+    public static function make($items = []): static
     {
         static::validateParameters($items);
 
         return parent::make($items);
     }
 
-    /**
-     * @param  Builder $builder
-     * @return Builder
-     */
     public function apply(Builder $builder): Builder
     {
         $this
@@ -49,20 +46,21 @@ class EloquentFilters extends Collection
     /**
      * @return mixed
      */
-    public function removeNotApplicable()
+    public function removeNotApplicable(): static
     {
         return $this->filter->isApplicable();
     }
 
     /**
-     * @param $items
+     * @param  iterable<int, mixed>  $items
+     *
      * @throws Throwable
      */
-    protected static function validateParameters($items)
+    protected static function validateParameters(iterable $items): void
     {
         collect($items)->each(fn ($item) => throw_unless(
             $item instanceof EloquentFilterContract,
-            new EloquentFiltersException("Filter must implement EloquentFilterContract")
+            new EloquentFiltersException('Filter must implement EloquentFilterContract')
         ));
     }
 }

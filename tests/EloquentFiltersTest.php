@@ -1,23 +1,19 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Tests;
+namespace Atldays\LaravelEloquentFilters\Tests;
 
+use Atldays\LaravelEloquentFilters\Contracts\EloquentFilterContract;
+use Atldays\LaravelEloquentFilters\EloquentFilters;
+use Atldays\LaravelEloquentFilters\Exceptions\EloquentFiltersException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Pricecurrent\LaravelEloquentFilters\Contracts\EloquentFilterContract;
-use Pricecurrent\LaravelEloquentFilters\EloquentFilters;
-use Pricecurrent\LaravelEloquentFilters\Exceptions\EloquentFiltersException;
 
 class EloquentFiltersTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @covers \EloquentFilters::handle
-     */
-    public function it_is_buit_off_of_the_eloquent_filters()
+    public function test_it_is_buit_off_of_the_eloquent_filters(): void
     {
         $filterA = $this->mock(EloquentFilterContract::class);
         $filterB = $this->mock(EloquentFilterContract::class);
@@ -27,11 +23,7 @@ class EloquentFiltersTest extends TestCase
         $this->assertCount(2, $filters);
     }
 
-    /**
-     * @test
-     * @covers \EloquentFilters::handle
-     */
-    public function it_applies_all_the_filters()
+    public function test_it_applies_all_the_filters(): void
     {
         $builder = new Builder(resolve(QueryBuilder::class));
 
@@ -48,11 +40,7 @@ class EloquentFiltersTest extends TestCase
         $builder = $filters->apply($builder);
     }
 
-    /**
-     * @test
-     * @covers \EloquentFilters::handle
-     */
-    public function it_doesnt_apply_inapplicable_filters()
+    public function test_it_doesnt_apply_inapplicable_filters(): void
     {
         $builder = new Builder(resolve(QueryBuilder::class));
 
@@ -69,17 +57,12 @@ class EloquentFiltersTest extends TestCase
         $builder = $filters->apply($builder);
     }
 
-    /**
-     * @test
-     * @covers \EloquentFilters::handle
-     */
-    public function it_throws_an_exception_when_composed_with_non_filterable_contracts()
+    public function test_it_throws_an_exception_when_composed_with_non_filterable_contracts(): void
     {
         $builder = new Builder(resolve(QueryBuilder::class));
 
         $filterA = $this->spy(EloquentFilterContract::class);
-        $filterB = new class() {
-        };
+        $filterB = new class {};
 
         try {
             $filters = EloquentFilters::make([$filterA, $filterB]);

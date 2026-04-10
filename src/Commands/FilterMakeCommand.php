@@ -1,8 +1,9 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Commands;
+namespace Atldays\LaravelEloquentFilters\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Symfony\Component\Console\Input\InputOption;
 
 class FilterMakeCommand extends GeneratorCommand
@@ -14,42 +15,33 @@ class FilterMakeCommand extends GeneratorCommand
 
     /**
      * The type of class being generated.
-     *
-     * @var string
      */
     protected $type = 'Filter';
 
     /**
      * Get the stub file for the generator.
-     *
-     * @return string
      */
-    protected function getStub()
+    protected function getStub(): string
     {
         if ($this->option('field')) {
-            return dirname(__DIR__, 1) . '/stubs/filter.field.stub';
+            return dirname(__DIR__, 1).'/stubs/filter.field.stub';
         }
 
-        return dirname(__DIR__, 1) . '/stubs/filter.stub';
+        return dirname(__DIR__, 1).'/stubs/filter.stub';
     }
 
     /**
      * Get the default namespace for the class.
-     *
-     * @param string $rootNamespace
-     * @return string
      */
-    protected function getDefaultNamespace($rootNamespace)
+    protected function getDefaultNamespace($rootNamespace): string
     {
-        return $rootNamespace . '\Filters';
+        return $rootNamespace.'\Filters';
     }
 
     /**
      * Get the console command arguments.
-     *
-     * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['name' => InputOption::VALUE_REQUIRED, 'Name of the Filter that should be created'],
@@ -58,24 +50,21 @@ class FilterMakeCommand extends GeneratorCommand
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
-            ['field' => InputOption::VALUE_OPTIONAL, 'The name of the Filter field']
+            ['field' => InputOption::VALUE_OPTIONAL, 'The name of the Filter field'],
         ];
     }
 
     /**
      * Build the class with the given name.
      *
-     * @param string $name
-     * @return string
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     *
+     * @throws FileNotFoundException
      */
-    protected function buildClass($name)
+    protected function buildClass($name): string
     {
         $stub = $this->files->get($this->getStub());
 

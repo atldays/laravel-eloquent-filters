@@ -1,15 +1,15 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Tests\Filters;
+namespace Atldays\LaravelEloquentFilters\Tests\Filters;
 
+use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
 
 class AgeGreaterThanFilter extends AbstractEloquentFilter
 {
-    protected $age;
+    protected ?int $age;
 
-    public function __construct($age)
+    public function __construct(?int $age)
     {
         $this->age = $age;
     }
@@ -21,6 +21,6 @@ class AgeGreaterThanFilter extends AbstractEloquentFilter
 
     public function isApplicable(): bool
     {
-        return null !== $this->age && is_integer($this->age) && $this->age > 0;
+        return $this->age !== null && is_int($this->age) && $this->age > 0;
     }
 }

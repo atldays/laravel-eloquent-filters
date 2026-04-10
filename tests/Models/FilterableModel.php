@@ -1,20 +1,16 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Tests\Models;
+namespace Atldays\LaravelEloquentFilters\Tests\Models;
 
+use Atldays\LaravelEloquentFilters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Pricecurrent\LaravelEloquentFilters\Filterable;
 
 class FilterableModel extends Model
 {
     use Filterable;
     use HasFactory;
 
-    /**
-     * Don't protect against mass assignment.
-     *
-     * @var array
-     */
+    /** @var list<string> */
     protected $guarded = [];
 }

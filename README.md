@@ -1,16 +1,20 @@
 # Advanced Laravel models filtering capabilities
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/pricecurrent/laravel-eloquent-filters.svg?style=flat-square)](https://packagist.org/packages/pricecurrent/laravel-eloquent-filters)
-[![run-tests](https://github.com/pricecurrent/laravel-eloquent-filters/actions/workflows/run-tests.yml/badge.svg)](https://github.com/pricecurrent/laravel-eloquent-filters/actions/workflows/run-tests.yml)
-[![GitHub Code Style Action Status](https://github.com/pricecurrent/laravel-eloquent-filters/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/pricecurrent/laravel-eloquent-filters/actions/workflows/php-cs-fixer.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/pricecurrent/laravel-eloquent-filters.svg?style=flat-square)](https://packagist.org/packages/pricecurrent/laravel-eloquent-filters)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/atldays/laravel-eloquent-filters.svg?logo=packagist&style=for-the-badge)](https://packagist.org/packages/atldays/laravel-eloquent-filters)
+[![Total Downloads](https://img.shields.io/packagist/dt/atldays/laravel-eloquent-filters.svg?style=for-the-badge&color=blue)](https://packagist.org/packages/atldays/laravel-eloquent-filters)
+[![CI](https://img.shields.io/github/actions/workflow/status/atldays/laravel-eloquent-filters/ci.yaml?style=for-the-badge&label=CI)](https://github.com/atldays/laravel-eloquent-filters/actions/workflows/ci.yaml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE.md)
+
+This package is maintained by Atldays and is based on a fork of the original
+[`pricecurrent/laravel-eloquent-filters`](https://github.com/pricecurrent/laravel-eloquent-filters)
+package.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require pricecurrent/laravel-eloquent-filters
+composer require atldays/laravel-eloquent-filters
 ```
 
 ## Usage
@@ -25,7 +29,7 @@ Consider you have a Product, and you need to filter products by `name`:
 
 ```php
 use App\Filters\NameFilter;
-use Pricecurrent\LaravelEloquentFilters\EloquentFilters;
+use Atldays\LaravelEloquentFilters\EloquentFilters;
 
 class ProductsController
 {
@@ -57,7 +61,7 @@ php artisan make:eloquent-filter Models/Product/NameFilter --field=name
 Here is what your `NameFilter` might look like:
 
 ```php
-use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
+use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
 use Illuminate\Database\Eloquent\Builder;
 
 class NameFilter extends AbstractEloquentFilter
@@ -81,7 +85,7 @@ Notice how our Filter has no clue it is tied up with a specific Eloquent Model? 
 ```php
 use App\Filters\NameFilter;
 use App\Models\User;
-use Pricecurrent\LaravelEloquentFilters\EloquentFilters;
+use Atldays\LaravelEloquentFilters\EloquentFilters;
 
 class UsersController
 {
@@ -99,7 +103,7 @@ You can chain methods from the filter as if it was simply an Eloquent Builder me
 ```php
 use App\Filters\NameFilter;
 use App\Models\User;
-use Pricecurrent\LaravelEloquentFilters\EloquentFilters;
+use Atldays\LaravelEloquentFilters\EloquentFilters;
 
 class UsersController
 {
@@ -120,13 +124,24 @@ To enable filtering capabilities on an Eloquent Model simply import the trait `F
 
 ```php
 
-use Pricecurrent\LaravelEloquentFilters\Filterable;
+use Atldays\LaravelEloquentFilters\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
     use Filterable;
 }
+```
+
+You may also pass a single filter or an array of filters directly:
+
+```php
+Product::filter(new NameFilter($request->name))->get();
+
+Product::filter([
+    new NameFilter($request->name),
+    new IsActiveFilter($request->boolean('active')),
+])->get();
 ```
 
 ### More complex use-case
@@ -294,12 +309,12 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+Please review our [security policy](.github/SECURITY.md) on how to report security vulnerabilities.
 
 ## Credits
 
-- [Andrew Malinnikov](https://github.com/pricecurrent)
-- [All Contributors](../../contributors)
+- [Anjey Tsibylskij](https://github.com/atldays)
+- Forked from [pricecurrent/laravel-eloquent-filters](https://github.com/pricecurrent/laravel-eloquent-filters)
 
 ## License
 

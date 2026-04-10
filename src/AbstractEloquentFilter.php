@@ -1,9 +1,9 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters;
+namespace Atldays\LaravelEloquentFilters;
 
+use Atldays\LaravelEloquentFilters\Contracts\EloquentFilterContract;
 use Illuminate\Database\Eloquent\Builder;
-use Pricecurrent\LaravelEloquentFilters\Contracts\EloquentFilterContract;
 
 abstract class AbstractEloquentFilter implements EloquentFilterContract
 {

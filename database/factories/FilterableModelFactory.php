@@ -1,15 +1,16 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Database\Factories;
+namespace Atldays\LaravelEloquentFilters\Database\Factories;
 
+use Atldays\LaravelEloquentFilters\Tests\Models\FilterableModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Pricecurrent\LaravelEloquentFilters\Tests\Models\FilterableModel;
 
 class FilterableModelFactory extends Factory
 {
+    /** @var class-string<FilterableModel> */
     protected $model = FilterableModel::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'name' => $this->faker->name,

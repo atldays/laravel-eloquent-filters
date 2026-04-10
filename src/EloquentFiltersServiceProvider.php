@@ -1,14 +1,16 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters;
+namespace Atldays\LaravelEloquentFilters;
 
+use Atldays\LaravelEloquentFilters\Commands\FilterMakeCommand;
 use Illuminate\Support\ServiceProvider;
-use Pricecurrent\LaravelEloquentFilters\Commands\FilterMakeCommand;
 
 class EloquentFiltersServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
-        $this->commands([FilterMakeCommand::class]);
+        if ($this->app->runningInConsole()) {
+            $this->commands([FilterMakeCommand::class]);
+        }
     }
 }

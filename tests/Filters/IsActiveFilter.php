@@ -1,9 +1,9 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Tests\Filters;
+namespace Atldays\LaravelEloquentFilters\Tests\Filters;
 
+use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
 
 class IsActiveFilter extends AbstractEloquentFilter
 {
