@@ -11,7 +11,7 @@ use Throwable;
 class EloquentFilters extends Collection
 {
     /**
-     * @param iterable<int, EloquentFilterContract> $items
+     * @param  iterable<int, EloquentFilterContract>  $items
      *
      * @throws Throwable
      */
@@ -23,7 +23,7 @@ class EloquentFilters extends Collection
     }
 
     /**
-     * @param iterable<int, EloquentFilterContract> $items
+     * @param  iterable<int, EloquentFilterContract>  $items
      *
      * @throws Throwable
      */
@@ -38,7 +38,7 @@ class EloquentFilters extends Collection
     {
         $this
             ->removeNotApplicable()
-            ->each(fn($filter) => $filter->apply($builder));
+            ->each(fn ($filter) => $filter->apply($builder));
 
         return $builder;
     }
@@ -52,13 +52,13 @@ class EloquentFilters extends Collection
     }
 
     /**
-     * @param iterable<int, mixed> $items
+     * @param  iterable<int, mixed>  $items
      *
      * @throws Throwable
      */
     protected static function validateParameters(iterable $items): void
     {
-        collect($items)->each(fn($item) => throw_unless(
+        collect($items)->each(fn ($item) => throw_unless(
             $item instanceof EloquentFilterContract,
             new EloquentFiltersException('Filter must implement EloquentFilterContract')
         ));
