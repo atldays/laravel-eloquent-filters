@@ -8,14 +8,12 @@ use Atldays\LaravelEloquentFilters\Exceptions\EloquentFiltersException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use PHPUnit\Framework\Attributes\Test;
 
 class EloquentFiltersTest extends TestCase
 {
     use DatabaseTransactions;
 
-    #[Test]
-    public function it_is_buit_off_of_the_eloquent_filters(): void
+    public function test_it_is_buit_off_of_the_eloquent_filters(): void
     {
         $filterA = $this->mock(EloquentFilterContract::class);
         $filterB = $this->mock(EloquentFilterContract::class);
@@ -25,8 +23,7 @@ class EloquentFiltersTest extends TestCase
         $this->assertCount(2, $filters);
     }
 
-    #[Test]
-    public function it_applies_all_the_filters(): void
+    public function test_it_applies_all_the_filters(): void
     {
         $builder = new Builder(resolve(QueryBuilder::class));
 
@@ -43,8 +40,7 @@ class EloquentFiltersTest extends TestCase
         $builder = $filters->apply($builder);
     }
 
-    #[Test]
-    public function it_doesnt_apply_inapplicable_filters(): void
+    public function test_it_doesnt_apply_inapplicable_filters(): void
     {
         $builder = new Builder(resolve(QueryBuilder::class));
 
@@ -61,8 +57,7 @@ class EloquentFiltersTest extends TestCase
         $builder = $filters->apply($builder);
     }
 
-    #[Test]
-    public function it_throws_an_exception_when_composed_with_non_filterable_contracts(): void
+    public function test_it_throws_an_exception_when_composed_with_non_filterable_contracts(): void
     {
         $builder = new Builder(resolve(QueryBuilder::class));
 

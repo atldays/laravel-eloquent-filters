@@ -6,12 +6,10 @@ use Atldays\LaravelEloquentFilters\EloquentFilters;
 use Atldays\LaravelEloquentFilters\Tests\Filters\AgeGreaterThanFilter;
 use Atldays\LaravelEloquentFilters\Tests\Filters\NameFilter;
 use Atldays\LaravelEloquentFilters\Tests\Models\FilterableModel;
-use PHPUnit\Framework\Attributes\Test;
 
 class FilterableModelTest extends TestCase
 {
-    #[Test]
-    public function it_is_filtered_with_provided_filter(): void
+    public function test_it_is_filtered_with_provided_filter(): void
     {
         FilterableModel::factory()->create(['name' => 'john']);
         FilterableModel::factory()->create(['name' => 'jack']);
@@ -27,8 +25,7 @@ class FilterableModelTest extends TestCase
         $this->assertEquals('jack', $user->name);
     }
 
-    #[Test]
-    public function it_utilising_all_provided_filters(): void
+    public function test_it_utilising_all_provided_filters(): void
     {
         $modelA = FilterableModel::factory()->create(['name' => 'john', 'age' => 20]);
         $modelB = FilterableModel::factory()->create(['name' => 'jack', 'age' => 14]);
@@ -43,8 +40,7 @@ class FilterableModelTest extends TestCase
         $this->assertTrue($results->contains($modelC));
     }
 
-    #[Test]
-    public function it_is_chainable_with_other_builder_methods(): void
+    public function test_it_is_chainable_with_other_builder_methods(): void
     {
         FilterableModel::factory()->create(['name' => 'john']);
         FilterableModel::factory()->create(['name' => 'jack']);
@@ -60,8 +56,7 @@ class FilterableModelTest extends TestCase
         $this->assertEquals('john', $user->name);
     }
 
-    #[Test]
-    public function it_ignores_filter_that_is_not_applicable(): void
+    public function test_it_ignores_filter_that_is_not_applicable(): void
     {
         $modelA = FilterableModel::factory()->create(['age' => 18]);
         $modelB = FilterableModel::factory()->create(['age' => 30]);
@@ -76,8 +71,7 @@ class FilterableModelTest extends TestCase
         $this->assertTrue($results->contains($modelB));
     }
 
-    #[Test]
-    public function it_accepts_a_single_filter_instance(): void
+    public function test_it_accepts_a_single_filter_instance(): void
     {
         FilterableModel::factory()->create(['name' => 'john']);
         FilterableModel::factory()->create(['name' => 'jack']);
@@ -88,8 +82,7 @@ class FilterableModelTest extends TestCase
         $this->assertEquals('jack', $results->first()->name);
     }
 
-    #[Test]
-    public function it_accepts_an_array_of_filters(): void
+    public function test_it_accepts_an_array_of_filters(): void
     {
         $modelA = FilterableModel::factory()->create(['name' => 'john', 'age' => 20]);
         FilterableModel::factory()->create(['name' => 'jack', 'age' => 14]);

@@ -4,7 +4,6 @@ namespace Atldays\LaravelEloquentFilters\Tests;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
-use PHPUnit\Framework\Attributes\Test;
 
 class FilterMakeCommandTest extends TestCase
 {
@@ -17,8 +16,7 @@ class FilterMakeCommandTest extends TestCase
         File::delete($this->filtersPath("$this->filterName.php"));
     }
 
-    #[Test]
-    public function it_creates_a_filter_class(): void
+    public function test_it_creates_a_filter_class(): void
     {
         Artisan::call('make:eloquent-filter', [
             'name' => $this->filterName,
@@ -30,8 +28,7 @@ class FilterMakeCommandTest extends TestCase
         $this->assertFileEquals($expectedFile, $resultFile);
     }
 
-    #[Test]
-    public function it_inline_creates_a_filter_class(): void
+    public function test_it_inline_creates_a_filter_class(): void
     {
         Artisan::call("make:eloquent-filter {$this->filterName}");
 
@@ -41,8 +38,7 @@ class FilterMakeCommandTest extends TestCase
         $this->assertFileEquals($expectedFile, $resultFile);
     }
 
-    #[Test]
-    public function it_creates_a_filter_class_with_field_name(): void
+    public function test_it_creates_a_filter_class_with_field_name(): void
     {
         Artisan::call('make:eloquent-filter', [
             'name' => $this->filterName,
@@ -54,8 +50,7 @@ class FilterMakeCommandTest extends TestCase
         $this->assertFileEquals($expectedFile, $resultFile);
     }
 
-    #[Test]
-    public function it_inline_creates_a_filter_class_with_field_name(): void
+    public function test_it_inline_creates_a_filter_class_with_field_name(): void
     {
         Artisan::call("make:eloquent-filter {$this->filterName} --field=name");
         $expectedFile = $this->expectedFilesPath('FilterMakerCommand/it_creates_a_filter_class_with_field_name.php');
