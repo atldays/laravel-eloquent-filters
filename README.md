@@ -1,7 +1,9 @@
 # Advanced Laravel models filtering capabilities
 
-[![run-tests](https://github.com/atldays/laravel-eloquent-filters/actions/workflows/run-tests.yml/badge.svg)](https://github.com/atldays/laravel-eloquent-filters/actions/workflows/run-tests.yml)
-[![Pint](https://github.com/atldays/laravel-eloquent-filters/actions/workflows/pint.yml/badge.svg)](https://github.com/atldays/laravel-eloquent-filters/actions/workflows/pint.yml)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/atldays/laravel-eloquent-filters.svg?logo=packagist&style=for-the-badge)](https://packagist.org/packages/atldays/laravel-eloquent-filters)
+[![Total Downloads](https://img.shields.io/packagist/dt/atldays/laravel-eloquent-filters.svg?style=for-the-badge&color=blue)](https://packagist.org/packages/atldays/laravel-eloquent-filters)
+[![CI](https://img.shields.io/github/actions/workflow/status/atldays/laravel-eloquent-filters/ci.yaml?style=for-the-badge&label=CI)](https://github.com/atldays/laravel-eloquent-filters/actions/workflows/ci.yaml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE.md)
 
 This package is maintained by Atldays and is based on a fork of the original
 [`pricecurrent/laravel-eloquent-filters`](https://github.com/pricecurrent/laravel-eloquent-filters)
@@ -311,8 +313,7 @@ Please review our [security policy](.github/SECURITY.md) on how to report securi
 
 ## Credits
 
-- [Atldays](https://github.com/atldays)
-- [All Contributors](../../contributors)
+- [Anjey Tsibylskij](https://github.com/atldays)
 - Forked from [pricecurrent/laravel-eloquent-filters](https://github.com/pricecurrent/laravel-eloquent-filters)
 
 ## License
