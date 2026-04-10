@@ -1,55 +1,74 @@
 # Contributing
 
-Contributions are **welcome** and will be fully **credited**.
+Contributions are welcome.
 
-Please read and understand the contribution guide before creating an issue or pull request.
+Please read this guide before opening an issue or pull request.
 
-## Etiquette
+## Before You Start
 
-This project is open source, and as such, the maintainers give their free time to build and maintain the source code
-held within. They make the code freely available in the hope that it will be of use to other developers. It would be
-extremely unfair for them to suffer abuse or anger for their hard work.
+- Reproduce the bug first to make sure it is not incidental.
+- Search existing issues and pull requests before opening a new one.
+- Keep pull requests focused. One change per pull request is preferred.
+- Update tests and documentation when behavior changes.
 
-Please be considerate towards maintainers when raising issues or presenting pull requests. Let's show the
-world that developers are civilized and selfless people.
+## Supported Stack
 
-It's the duty of the maintainer to ensure that all submissions to the project are of sufficient
-quality to benefit the project. Many developers have different skillsets, strengths, and weaknesses. Respect the maintainer's decision, and do not be upset or abusive if your submission is not used.
+- PHP: `^8.1`
+- Laravel components: `^10.0|^11.0|^12.0`
+- Code style: Laravel Pint
+- Tests: PHPUnit via Orchestra Testbench
 
-## Viability
+## Development Notes
 
-When requesting or submitting new features, first consider whether it might be useful to others. Open
-source projects are used by many developers, who may have entirely different needs to your own. Think about
-whether or not your feature is likely to be used by other users of the project.
+- Public APIs should remain stable unless the change is intentionally breaking and clearly documented.
+- Keep changes framework-agnostic where possible.
+- Prefer small, readable patches over broad refactors.
 
-## Procedure
+## Commit Messages
 
-Before filing an issue:
+This repository uses Conventional Commits. The first line of the commit message must match this shape:
 
-- Attempt to replicate the problem, to ensure that it wasn't a coincidental incident.
-- Check to make sure your feature suggestion isn't already present within the project.
-- Check the pull requests tab to ensure that the bug doesn't have a fix in progress.
-- Check the pull requests tab to ensure that the feature isn't already in progress.
+```text
+<type>(optional-scope): <description>
+```
 
-Before submitting a pull request:
+Examples:
 
-- Check the codebase to ensure that your feature doesn't already exist.
-- Check the pull requests to ensure that another person hasn't already submitted the feature or fix.
+- `feat(filters): support single filter argument`
+- `fix(ci): run tests on Laravel 12`
+- `docs(readme): update installation instructions`
 
-## Requirements
+Allowed types:
 
-If the project maintainer has any additional requirements, you will find them listed here.
+- `build`
+- `chore`
+- `ci`
+- `docs`
+- `feat`
+- `fix`
+- `perf`
+- `refactor`
+- `revert`
+- `style`
+- `test`
 
-- **[PSR-2 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)** - The easiest way to apply the conventions is to install [PHP Code Sniffer](https://pear.php.net/package/PHP_CodeSniffer).
+## Local Checks
 
-- **Add tests!** - Your patch won't be accepted if it doesn't have tests.
+The repository ships with git hooks for:
 
-- **Document any change in behaviour** - Make sure the `README.md` and any other relevant documentation are kept up-to-date.
+- `pre-commit`: formats staged PHP files with Pint
+- `pre-push`: runs the test suite
 
-- **Consider our release cycle** - We try to follow [SemVer v2.0.0](https://semver.org/). Randomly breaking public APIs is not an option.
+Without a local PHP installation, you can use Docker:
 
-- **One pull request per feature** - If you want to do more than one thing, send multiple pull requests.
+```bash
+docker run --rm -v "$PWD:/app" -w /app composer:2 sh -lc 'composer format'
+docker run --rm -v "$PWD:/app" -w /app composer:2 sh -lc 'composer test'
+```
 
-- **Send coherent history** - Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please [squash them](https://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Changing-Multiple-Commit-Messages) before submitting.
+## Pull Requests
 
-**Happy coding**!
+- Add tests for functional changes.
+- Keep `README.md` and other docs in sync with behavior changes.
+- Make sure `composer format:test` and `composer test` pass before requesting review.
+- Use a clean, meaningful commit history.
