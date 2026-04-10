@@ -1,39 +1,39 @@
 {
-    "name": "pricecurrent/laravel-eloquent-filters",
+    "name": "atldays/laravel-eloquent-filters",
     "description": "Advanced Laravel models filtering capabilities",
     "keywords": [
-        "pricecurrent",
+        "atldays",
         "laravel",
         "laravel-eloquent-filters",
         "eloquent-filters",
         "model-filters"
     ],
-    "homepage": "https://github.com/pricecurrent/laravel-eloquent-filters",
+    "homepage": "https://github.com/atldays/laravel-eloquent-filters",
     "license": "MIT",
     "authors": [{
-        "name": "Andrew Malinnikov",
-        "email": "code.bright.anywhere@gmail.com",
-        "role": "Developer"
+        "name": "Anjey Tsibylskij",
+        "homepage": "https://github.com/atldays",
+        "role": "Maintainer"
     }],
     "require": {
-        "php": "^7.4|^8.0",
-        "illuminate/database": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
+        "php": "^8.1",
+        "illuminate/database": "^10.0|^11.0|^12.0",
+        "illuminate/support": "^10.0|^11.0|^12.0",
         "spatie/laravel-package-tools": "^1.9"
     },
     "require-dev": {
-        "mockery/mockery": "^1.4",
-        "orchestra/testbench": "^6.23|^7.0"
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^8.0|^9.0|^10.0"
     },
     "autoload": {
         "psr-4": {
-            "Pricecurrent\\LaravelEloquentFilters\\": "src",
-            "Pricecurrent\\LaravelEloquentFilters\\Database\\Factories\\": "database/factories"
+            "Atldays\\LaravelEloquentFilters\\": "src",
+            "Atldays\\LaravelEloquentFilters\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Pricecurrent\\LaravelEloquentFilters\\Tests\\": "tests"
+            "Atldays\\LaravelEloquentFilters\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -46,7 +46,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Pricecurrent\\LaravelEloquentFilters\\EloquentFiltersServiceProvider"
+                "Atldays\\LaravelEloquentFilters\\EloquentFiltersServiceProvider"
             ],
             "aliases": {}
         }
