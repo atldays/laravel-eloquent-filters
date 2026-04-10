@@ -1,24 +1,23 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Tests;
+namespace Atldays\LaravelEloquentFilters\Tests;
 
-use Pricecurrent\LaravelEloquentFilters\EloquentFilters;
-use Pricecurrent\LaravelEloquentFilters\Tests\Filters\AgeGreaterThanFilter;
-use Pricecurrent\LaravelEloquentFilters\Tests\Filters\NameFilter;
-use Pricecurrent\LaravelEloquentFilters\Tests\Models\FilterableModel;
+use Atldays\LaravelEloquentFilters\EloquentFilters;
+use Atldays\LaravelEloquentFilters\Tests\Filters\AgeGreaterThanFilter;
+use Atldays\LaravelEloquentFilters\Tests\Filters\NameFilter;
+use Atldays\LaravelEloquentFilters\Tests\Models\FilterableModel;
+use PHPUnit\Framework\Attributes\Test;
 
 class FilterableModelTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function it_is_filtered_with_provided_filter()
+    #[Test]
+    public function it_is_filtered_with_provided_filter(): void
     {
         FilterableModel::factory()->create(['name' => 'john']);
         FilterableModel::factory()->create(['name' => 'jack']);
         FilterableModel::factory()->create(['name' => 'jim']);
         $filters = EloquentFilters::make([new NameFilter('jack')]);
-        $model = new FilterableModel();
+        $model = new FilterableModel;
 
         $query = $model->filter($filters);
         $results = $query->get();
@@ -28,16 +27,14 @@ class FilterableModelTest extends TestCase
         $this->assertEquals('jack', $user->name);
     }
 
-    /**
-     * @test
-     */
-    public function it_utilising_all_provided_filters()
+    #[Test]
+    public function it_utilising_all_provided_filters(): void
     {
         $modelA = FilterableModel::factory()->create(['name' => 'john', 'age' => 20]);
         $modelB = FilterableModel::factory()->create(['name' => 'jack', 'age' => 14]);
         $modelC = FilterableModel::factory()->create(['name' => 'jim', 'age' => 23]);
         $filters = EloquentFilters::make([new NameFilter('j'), new AgeGreaterThanFilter(14)]);
-        $model = new FilterableModel();
+        $model = new FilterableModel;
 
         $results = $model->filter($filters)->get();
 
@@ -46,10 +43,8 @@ class FilterableModelTest extends TestCase
         $this->assertTrue($results->contains($modelC));
     }
 
-    /**
-     * @test
-     */
-    public function it_is_chainable_with_other_builder_methods()
+    #[Test]
+    public function it_is_chainable_with_other_builder_methods(): void
     {
         FilterableModel::factory()->create(['name' => 'john']);
         FilterableModel::factory()->create(['name' => 'jack']);
@@ -65,10 +60,8 @@ class FilterableModelTest extends TestCase
         $this->assertEquals('john', $user->name);
     }
 
-    /**
-     * @test
-     */
-    public function it_ignores_filter_that_is_not_applicable()
+    #[Test]
+    public function it_ignores_filter_that_is_not_applicable(): void
     {
         $modelA = FilterableModel::factory()->create(['age' => 18]);
         $modelB = FilterableModel::factory()->create(['age' => 30]);
@@ -81,5 +74,34 @@ class FilterableModelTest extends TestCase
         $this->assertEquals(2, $results->count());
         $this->assertTrue($results->contains($modelA));
         $this->assertTrue($results->contains($modelB));
+    }
+
+    #[Test]
+    public function it_accepts_a_single_filter_instance(): void
+    {
+        FilterableModel::factory()->create(['name' => 'john']);
+        FilterableModel::factory()->create(['name' => 'jack']);
+
+        $results = FilterableModel::filter(new NameFilter('jack'))->get();
+
+        $this->assertEquals(1, $results->count());
+        $this->assertEquals('jack', $results->first()->name);
+    }
+
+    #[Test]
+    public function it_accepts_an_array_of_filters(): void
+    {
+        $modelA = FilterableModel::factory()->create(['name' => 'john', 'age' => 20]);
+        FilterableModel::factory()->create(['name' => 'jack', 'age' => 14]);
+        $modelC = FilterableModel::factory()->create(['name' => 'jim', 'age' => 23]);
+
+        $results = FilterableModel::filter([
+            new NameFilter('j'),
+            new AgeGreaterThanFilter(14),
+        ])->get();
+
+        $this->assertEquals(2, $results->count());
+        $this->assertTrue($results->contains($modelA));
+        $this->assertTrue($results->contains($modelC));
     }
 }
