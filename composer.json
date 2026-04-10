@@ -22,6 +22,7 @@
         "spatie/laravel-package-tools": "^1.9"
     },
     "require-dev": {
+        "laravel/pint": "^1.18",
         "mockery/mockery": "^1.6",
         "orchestra/testbench": "^8.0|^9.0|^10.0"
     },
@@ -37,7 +38,9 @@
         }
     },
     "scripts": {
-        "test": "./vendor/bin/testbench package:test --parallel --no-coverage",
+        "format": "vendor/bin/pint",
+        "format:test": "vendor/bin/pint --test",
+        "test": "vendor/bin/phpunit --no-coverage",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
     "config": {
