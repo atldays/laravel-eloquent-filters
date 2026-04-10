@@ -1,6 +1,6 @@
 <?php
 
-namespace Pricecurrent\LaravelEloquentFilters\Contracts;
+namespace Atldays\LaravelEloquentFilters\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
 

@@ -3,7 +3,7 @@
 namespace {{ namespace }};
 
 use Illuminate\Database\Eloquent\Builder;
-use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
+use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
 
 class {{ class }} extends AbstractEloquentFilter
 {

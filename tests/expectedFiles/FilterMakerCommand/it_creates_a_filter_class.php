@@ -2,8 +2,8 @@
 
 namespace App\Filters;
 
+use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
 
 class DummyFilter extends AbstractEloquentFilter
 {
