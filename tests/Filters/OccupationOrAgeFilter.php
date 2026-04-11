@@ -1,10 +1,10 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters\Tests\Filters;
+namespace Atldays\EloquentFilters\Tests\Filters;
 
-use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
-use Atldays\LaravelEloquentFilters\Contracts\ComposeableFilter;
-use Atldays\LaravelEloquentFilters\Contracts\EloquentFilterContract;
+use Atldays\EloquentFilters\AbstractEloquentFilter;
+use Atldays\EloquentFilters\Contracts\ComposeableFilter;
+use Atldays\EloquentFilters\Contracts\EloquentFilterContract;
 
 class OccupationOrAgeFilter extends AbstractEloquentFilter implements ComposeableFilter, EloquentFilterContract
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters\Commands;
+namespace Atldays\EloquentFilters\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
@@ -24,10 +24,10 @@ class FilterMakeCommand extends GeneratorCommand
     protected function getStub(): string
     {
         if ($this->option('field')) {
-            return dirname(__DIR__, 1).'/stubs/filter.field.stub';
+            return dirname(__DIR__, 2).'/stubs/filter.field.stub';
         }
 
-        return dirname(__DIR__, 1).'/stubs/filter.stub';
+        return dirname(__DIR__, 2).'/stubs/filter.stub';
     }
 
     /**

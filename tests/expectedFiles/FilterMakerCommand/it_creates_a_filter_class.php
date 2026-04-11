@@ -2,7 +2,7 @@
 
 namespace App\Filters;
 
-use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
+use Atldays\EloquentFilters\AbstractEloquentFilter;
 use Illuminate\Database\Eloquent\Builder;
 
 class DummyFilter extends AbstractEloquentFilter

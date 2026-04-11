@@ -1,9 +1,9 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters;
+namespace Atldays\EloquentFilters;
 
-use Atldays\LaravelEloquentFilters\Contracts\EloquentFilterContract;
-use Atldays\LaravelEloquentFilters\Exceptions\EloquentFiltersException;
+use Atldays\EloquentFilters\Contracts\EloquentFilterContract;
+use Atldays\EloquentFilters\Exceptions\EloquentFiltersException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Throwable;

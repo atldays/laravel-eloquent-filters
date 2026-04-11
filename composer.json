@@ -28,13 +28,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Atldays\\LaravelEloquentFilters\\": "src",
-            "Atldays\\LaravelEloquentFilters\\Database\\Factories\\": "database/factories"
+            "Atldays\\EloquentFilters\\": "src",
+            "Atldays\\EloquentFilters\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Atldays\\LaravelEloquentFilters\\Tests\\": "tests"
+            "Atldays\\EloquentFilters\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,7 +49,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Atldays\\LaravelEloquentFilters\\EloquentFiltersServiceProvider"
+                "Atldays\\EloquentFilters\\EloquentFiltersServiceProvider"
             ],
             "aliases": {}
         }

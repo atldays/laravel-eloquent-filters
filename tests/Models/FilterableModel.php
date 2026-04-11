@@ -1,8 +1,8 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters\Tests\Models;
+namespace Atldays\EloquentFilters\Tests\Models;
 
-use Atldays\LaravelEloquentFilters\Filterable;
+use Atldays\EloquentFilters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

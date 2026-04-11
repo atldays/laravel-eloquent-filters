@@ -1,8 +1,8 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters\Tests\Filters;
+namespace Atldays\EloquentFilters\Tests\Filters;
 
-use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
+use Atldays\EloquentFilters\AbstractEloquentFilter;
 use Illuminate\Database\Eloquent\Builder;
 
 class NameFilter extends AbstractEloquentFilter

@@ -1,6 +1,6 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters\Exceptions;
+namespace Atldays\EloquentFilters\Exceptions;
 
 use Exception;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters;
+namespace Atldays\EloquentFilters;
 
-use Atldays\LaravelEloquentFilters\Commands\FilterMakeCommand;
+use Atldays\EloquentFilters\Commands\FilterMakeCommand;
 use Illuminate\Support\ServiceProvider;
 
 class EloquentFiltersServiceProvider extends ServiceProvider

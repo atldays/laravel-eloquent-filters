@@ -1,10 +1,10 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters\Tests;
+namespace Atldays\EloquentFilters\Tests;
 
-use Atldays\LaravelEloquentFilters\Contracts\EloquentFilterContract;
-use Atldays\LaravelEloquentFilters\EloquentFilters;
-use Atldays\LaravelEloquentFilters\Exceptions\EloquentFiltersException;
+use Atldays\EloquentFilters\Contracts\EloquentFilterContract;
+use Atldays\EloquentFilters\EloquentFilters;
+use Atldays\EloquentFilters\Exceptions\EloquentFiltersException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
