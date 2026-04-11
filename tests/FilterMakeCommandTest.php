@@ -1,6 +1,6 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters\Tests;
+namespace Atldays\EloquentFilters\Tests;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;

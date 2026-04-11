@@ -29,7 +29,7 @@ Consider you have a Product, and you need to filter products by `name`:
 
 ```php
 use App\Filters\NameFilter;
-use Atldays\LaravelEloquentFilters\EloquentFilters;
+use Atldays\EloquentFilters\EloquentFilters;
 
 class ProductsController
 {
@@ -61,7 +61,7 @@ php artisan make:eloquent-filter Models/Product/NameFilter --field=name
 Here is what your `NameFilter` might look like:
 
 ```php
-use Atldays\LaravelEloquentFilters\AbstractEloquentFilter;
+use Atldays\EloquentFilters\AbstractEloquentFilter;
 use Illuminate\Database\Eloquent\Builder;
 
 class NameFilter extends AbstractEloquentFilter
@@ -85,7 +85,7 @@ Notice how our Filter has no clue it is tied up with a specific Eloquent Model? 
 ```php
 use App\Filters\NameFilter;
 use App\Models\User;
-use Atldays\LaravelEloquentFilters\EloquentFilters;
+use Atldays\EloquentFilters\EloquentFilters;
 
 class UsersController
 {
@@ -103,7 +103,7 @@ You can chain methods from the filter as if it was simply an Eloquent Builder me
 ```php
 use App\Filters\NameFilter;
 use App\Models\User;
-use Atldays\LaravelEloquentFilters\EloquentFilters;
+use Atldays\EloquentFilters\EloquentFilters;
 
 class UsersController
 {
@@ -124,7 +124,7 @@ To enable filtering capabilities on an Eloquent Model simply import the trait `F
 
 ```php
 
-use Atldays\LaravelEloquentFilters\Filterable;
+use Atldays\EloquentFilters\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model

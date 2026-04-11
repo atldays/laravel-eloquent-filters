@@ -1,6 +1,6 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters\Contracts;
+namespace Atldays\EloquentFilters\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
 

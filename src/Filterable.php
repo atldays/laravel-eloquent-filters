@@ -1,8 +1,8 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters;
+namespace Atldays\EloquentFilters;
 
-use Atldays\LaravelEloquentFilters\Contracts\EloquentFilterContract;
+use Atldays\EloquentFilters\Contracts\EloquentFilterContract;
 use Illuminate\Database\Eloquent\Builder;
 
 trait Filterable

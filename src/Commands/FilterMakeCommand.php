@@ -1,6 +1,6 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters\Commands;
+namespace Atldays\EloquentFilters\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;

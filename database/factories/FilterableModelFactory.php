@@ -1,8 +1,8 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters\Database\Factories;
+namespace Atldays\EloquentFilters\Database\Factories;
 
-use Atldays\LaravelEloquentFilters\Tests\Models\FilterableModel;
+use Atldays\EloquentFilters\Tests\Models\FilterableModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class FilterableModelFactory extends Factory

@@ -1,11 +1,11 @@
 <?php
 
-namespace Atldays\LaravelEloquentFilters\Tests;
+namespace Atldays\EloquentFilters\Tests;
 
-use Atldays\LaravelEloquentFilters\EloquentFilters;
-use Atldays\LaravelEloquentFilters\Tests\Filters\AgeGreaterThanFilter;
-use Atldays\LaravelEloquentFilters\Tests\Filters\NameFilter;
-use Atldays\LaravelEloquentFilters\Tests\Models\FilterableModel;
+use Atldays\EloquentFilters\EloquentFilters;
+use Atldays\EloquentFilters\Tests\Filters\AgeGreaterThanFilter;
+use Atldays\EloquentFilters\Tests\Filters\NameFilter;
+use Atldays\EloquentFilters\Tests\Models\FilterableModel;
 
 class FilterableModelTest extends TestCase
 {
