@@ -27,11 +27,11 @@ class EloquentFilters extends Collection
      *
      * @throws Throwable
      */
-    public static function make($items = []): static
+    public static function make($items = [], ...$args): static
     {
         static::validateParameters($items);
 
-        return parent::make($items);
+        return parent::make($items, ...$args);
     }
 
     public function apply(Builder $builder): Builder

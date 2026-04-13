@@ -17,6 +17,10 @@ You can install the package via composer:
 composer require atldays/laravel-eloquent-filters
 ```
 
+## Compatibility
+
+The package currently supports Laravel 10, 11, 12, and 13.
+
 ## Usage
 
 This package gives you fine-grained control over how you may go about filtering your Eloquent Models.
