@@ -59,6 +59,16 @@ jobs:
             laravel: 12.*
             testbench: 10.*
             stability: prefer-stable
+          - os: ubuntu-latest
+            php: 8.3
+            laravel: 13.*
+            testbench: 11.x-dev
+            stability: prefer-lowest
+          - os: ubuntu-latest
+            php: 8.5
+            laravel: 13.*
+            testbench: 11.x-dev
+            stability: prefer-stable
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
